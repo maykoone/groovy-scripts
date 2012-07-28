@@ -12,7 +12,7 @@ def url = new URL(address)
 @Grapes( @Grab("org.ccil.cowan.tagsoup:tagsoup:1.2.1") ) 
 def slurper = new XmlSlurper(new Parser() )
 
-
+//print url from all images on page
 url.withReader { reader -> 
     html = slurper.parse(reader) 
     html."**".findAll { it.name() == "img" }.each { println it.@src.text() }
